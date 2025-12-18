@@ -1,1 +1,173 @@
-saya julian ali hidayat
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="J Goes - Toko Sepeda Online Terlengkap di Indonesia">
+    <title>J Goes | Toko Sepeda Online</title>
+    <style>
+        :root { --primary: #228B22; --dark: #1a1a1a; }
+        body { margin:0; font-family:Arial, sans-serif; background:#f8f8f8; }
+        #login-section, #shop-section { display:none; min-height:100vh; }
+        #login-section.active, #shop-section.active { display:block; }
+        #login-section { position:relative; overflow:hidden; background:#000; }
+        .hero-bg { width:100%; height:100vh; object-fit:cover; opacity:0.6; }
+        .login-form { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); background:rgba(255,255,255,0.9); padding:40px; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,0.5); width:90%; max-width:400px; text-align:center; }
+        .login-form h2 { color:var(--dark); margin-bottom:20px; }
+        .login-form input { width:100%; padding:12px; margin:10px 0; border:1px solid #ccc; border-radius:6px; }
+        .login-form button { background:var(--primary); color:#fff; padding:12px 30px; border:none; border-radius:6px; cursor:pointer; font-size:16px; }
+        .anim-bike { position:absolute; bottom:10%; left:-30%; width:300px; opacity:0; transition:transform 2s ease-in-out, opacity 1s; }
+        .anim-bike.active { transform:translateX(130vw); opacity:1; }
+        header { background:var(--dark); color:#fff; padding:15px 5%; display:flex; justify-content:space-between; align-items:center; }
+        nav ul { list-style:none; display:flex; gap:30px; margin:0; }
+        nav a { color:#fff; text-decoration:none; font-weight:bold; }
+        .hero { background:url('https://www.herocycles.com/on/demandware.static/-/Sites-HeroCycles-Library/default/dwbe74ecd4/Lectro-CLP/Spotlight_website.jpg') center/cover no-repeat; height:60vh; display:flex; align-items:center; justify-content:center; text-align:center; color:#fff; }
+        .hero h1 { font-size:3rem; text-shadow:2px 2px 10px #000; }
+        .filters { padding:20px 5%; background:#fff; display:flex; gap:20px; }
+        .products { display:grid; grid-template-columns:repeat(auto-fill, minmax(280px,1fr)); gap:30px; padding:0 5% 40px; }
+        .card { background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 5px 15px rgba(0,0,0,0.1); text-align:center; }
+        .card img { width:100%; height:250px; object-fit:cover; }
+        .card h3 { margin:15px 0 5px; }
+        .rating { color:#ffd700; margin:10px 0; }
+        .card button { background:var(--primary); color:#fff; border:none; padding:12px; width:90%; margin:15px auto; border-radius:6px; cursor:pointer; }
+        aside { position:fixed; right:0; top:0; width:350px; height:100%; background:#fff; box-shadow:-5px 0 15px rgba(0,0,0,0.1); padding:80px 20px 20px; overflow-y:auto; transform:translateX(100%); transition:transform 0.3s; }
+        aside.active { transform:translateX(0); }
+        #cart-items { list-style:none; padding:0; }
+        #cart-items li { display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid #eee; }
+        footer { background:var(--dark); color:#fff; text-align:center; padding:30px; }
+        @media (max-width:768px) { aside { width:100%; } .hero h1 { font-size:2rem; } }
+    </style>
+</head>
+<body>
+    <section id="login-section" class="active">
+        <img src="https://www.herocycles.com/on/demandware.static/-/Sites-HeroCycles-Library/default/dwbe74ecd4/Lectro-CLP/Spotlight_website.jpg" alt="Hero banner sepeda" class="hero-bg">
+        <div class="login-form">
+            <h2>Login ke J Goes</h2>
+            <form id="login-form">
+                <input type="text" id="username" placeholder="Username" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+        <img src="https://thumbs.dreamstime.com/b/active-biker-riding-bicycle-city-park-happy-cartoon-character-enjoying-fast-ride-flat-road-summer-healthy-lifestyle-317589436.jpg" alt="Animasi city bike" class="anim-bike" id="anim-bike">
+    </section>
+
+    <section id="shop-section">
+        <header>
+            <h1>J Goes</h1>
+            <nav>
+                <ul>
+                    <li><a href="#">Produk</a></li>
+                    <li><a href="#">Kategori</a></li>
+                    <li><a href="#" id="cart-toggle">Keranjang (<span id="cart-count">0</span>)</a></li>
+                    <li><a href="#" id="logout">Logout</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section class="hero">
+            <h1>Temukan Sepeda Impianmu di J Goes!</h1>
+        </section>
+
+        <div class="filters">
+            <select><option>Kategori</option><option>Mountain</option><option>Road</option><option>City</option><option>Folding</option></select>
+            <select><option>Urutkan: Harga Rendah</option></select>
+        </div>
+
+        <main class="products">
+            <article class="card">
+                <img src="https://images-archive.giant-bicycles.com/remote/www.giant-bicycles.com/_upload/news/2016/LivCampaigns/PartsoftheBike_mountain.jpg" alt="Sepeda Mountain Bike Giant Talon">
+                <h3>Giant Talon</h3>
+                <p>Merek: Giant | Model: Talon 1</p>
+                <div class="rating">★★★★☆</div>
+                <button onclick="addToCart('Giant Talon')">Tambah ke Keranjang</button>
+            </article>
+            <article class="card">
+                <img src="https://cdn.mos.cms.futurecdn.net/47J7WJppMG3bCz5b6tfjnh.jpg" alt="Sepeda Road Bike Specialized">
+                <h3>Specialized Allez</h3>
+                <p>Merek: Specialized | Model: Allez Elite</p>
+                <div class="rating">★★★★★</div>
+                <button onclick="addToCart('Specialized Allez')">Tambah ke Keranjang</button>
+            </article>
+            <article class="card">
+                <img src="http://reidbikes.com/cdn/shop/files/Commuter-Comfort-1170-x-764-13.png?v=1730605996" alt="Sepeda City Bike Reid">
+                <h3>Reid Original City</h3>
+                <p>Merek: Reid | Model: Commuter</p>
+                <div class="rating">★★★★☆</div>
+                <button onclick="addToCart('Reid Original City')">Tambah ke Keranjang</button>
+            </article>
+            <article class="card">
+                <img src="https://bikepacking.com/wp-content/uploads/2023/01/Bike-Friday-All-Packa-Review_2.jpg" alt="Sepeda Folding Bike Friday">
+                <h3>Bike Friday All-Packa</h3>
+                <p>Merek: Bike Friday | Model: All-Packa</p>
+                <div class="rating">★★★★★</div>
+                <button onclick="addToCart('Bike Friday All-Packa')">Tambah ke Keranjang</button>
+            </article>
+        </main>
+
+        <aside id="cart-sidebar">
+            <h2>Keranjang Belanja</h2>
+            <ul id="cart-items"></ul>
+            <p>Total: Rp <span id="cart-total">0</span></p>
+        </aside>
+
+        <footer>
+            <p>&copy; 2025 J Goes. Semua hak cipta dilindungi.</p>
+        </footer>
+    </section>
+
+    <script>
+        const loginSection = document.getElementById('login-section');
+        const shopSection = document.getElementById('shop-section');
+        const animBike = document.getElementById('anim-bike');
+        const cartSidebar = document.getElementById('cart-sidebar');
+        const cartToggle = document.getElementById('cart-toggle');
+        const logout = document.getElementById('logout');
+        let cart = [];
+
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            animBike.classList.add('active');
+            setTimeout(() => {
+                loginSection.classList.remove('active');
+                shopSection.classList.add('active');
+            }, 2500);
+        });
+
+        cartToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            cartSidebar.classList.toggle('active');
+        });
+
+        logout.addEventListener('click', (e) => {
+            e.preventDefault();
+            shopSection.classList.remove('active');
+            loginSection.classList.add('active');
+            cart = [];
+            updateCart();
+        });
+
+        function addToCart(name) {
+            cart.push({name, price: Math.floor(Math.random()*5000000)+2000000});
+            updateCart();
+        }
+
+        function updateCart() {
+            const itemsEl = document.getElementById('cart-items');
+            const countEl = document.getElementById('cart-count');
+            const totalEl = document.getElementById('cart-total');
+            itemsEl.innerHTML = '';
+            let total = 0;
+            cart.forEach(item => {
+                const li = document.createElement('li');
+                li.innerHTML = `<span>${item.name}</span><span>Rp ${item.price.toLocaleString('id-ID')}</span>`;
+                itemsEl.appendChild(li);
+                total += item.price;
+            });
+            countEl.textContent = cart.length;
+            totalEl.textContent = total.toLocaleString('id-ID');
+        }
+    </script>
+</body>
+  </html>
